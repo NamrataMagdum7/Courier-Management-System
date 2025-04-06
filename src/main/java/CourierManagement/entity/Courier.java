@@ -17,7 +17,7 @@ public class Courier {
     public Courier() {}
 
     public Courier(long courierID, String senderName, String senderAddress, String receiverName, String receiverAddress,
-                   double weight, String status, String trackingNumber, Date deliveryDate, long userId) {
+                   double weight, String status, String trackingNumber, Date deliveryDate) {
         this.courierID = courierID;
         this.senderName = senderName;
         this.senderAddress = senderAddress;
@@ -27,7 +27,7 @@ public class Courier {
         this.status = status;
         this.trackingNumber = trackingNumber;
         this.deliveryDate = deliveryDate;
-        this.userId = userId;
+
     }
 
     // Getters and Setters
@@ -103,13 +103,9 @@ public class Courier {
         this.deliveryDate = deliveryDate;
     }
 
-    public long getUserId() {
-        return userId;
-    }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+
+
 
     @Override
     public String toString() {
@@ -123,7 +119,7 @@ public class Courier {
                 ", status='" + status + '\'' +
                 ", trackingNumber='" + trackingNumber + '\'' +
                 ", deliveryDate=" + deliveryDate +
-                ", userId=" + userId +
+
                 '}';
     }
 }

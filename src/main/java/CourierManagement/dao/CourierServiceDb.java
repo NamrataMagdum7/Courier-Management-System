@@ -15,7 +15,7 @@ public class CourierServiceDb {
     }
 
     public void insertOrder(Courier courier) {
-        String sql = "INSERT INTO Courier (courierID, senderName, senderAddress, receiverName, receiverAddress, weight, status, trackingNumber, deliveryDate, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Courier (courierID, senderName, senderAddress, receiverName, receiverAddress, weight, status, trackingNumber, deliveryDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, courier.getCourierID());
             ps.setString(2, courier.getSenderName());
@@ -26,7 +26,6 @@ public class CourierServiceDb {
             ps.setString(7, courier.getStatus());
             ps.setString(8, courier.getTrackingNumber());
             ps.setDate(9, new java.sql.Date(courier.getDeliveryDate().getTime()));
-            ps.setLong(10, courier.getUserId());
             ps.executeUpdate();
             System.out.println("Courier order inserted successfully.");
         } catch (SQLException e) {
@@ -59,19 +58,19 @@ public class CourierServiceDb {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Courier c = new Courier(
-                    rs.getLong("courierID"),
-                    rs.getString("senderName"),
-                    rs.getString("senderAddress"),
-                    rs.getString("receiverName"),
-                    rs.getString("receiverAddress"),
-                    rs.getDouble("weight"),
-                    rs.getString("status"),
-                    rs.getString("trackingNumber"),
-                    rs.getDate("deliveryDate"),
-                    rs.getLong("userId")
+                        rs.getLong("courierID"),
+                        rs.getString("senderName"),
+                        rs.getString("senderAddress"),
+                        rs.getString("receiverName"),
+                        rs.getString("receiverAddress"),
+                        rs.getDouble("weight"),
+                        rs.getString("status"),
+                        rs.getString("trackingNumber"),
+                        rs.getDate("deliveryDate")
                 );
                 history.add(c);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

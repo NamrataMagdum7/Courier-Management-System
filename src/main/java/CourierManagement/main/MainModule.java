@@ -46,8 +46,8 @@ public class MainModule {
                     System.out.print("Tracking Number: ");
                     c.setTrackingNumber(sc.nextLine());
                     c.setDeliveryDate(new Date());
-                    System.out.print("User ID: ");
-                    c.setUserId(sc.nextLong());
+                    System.out.print("DeliveryDate: ");
+                    //c.setUserId(sc.nextLong());
 
                     serviceDb.insertOrder(c);
                     break;
